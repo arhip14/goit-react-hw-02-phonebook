@@ -20,6 +20,7 @@ const ContactForm = ({ addContact }) => {
     number: '',
   };
 
+  
   const onSubmit = (values, { resetForm }) => {
     addContact({ ...values, id: Math.random().toString() });
     resetForm();
