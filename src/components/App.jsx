@@ -2,30 +2,24 @@ import React, { useState } from 'react';
 import '../index.css';
 import ContactForm from './ContactForm';
 import ContactList from './ContactList';
-import Filter from './Filter';
+
 function App() {
   const [contacts, setContacts] = useState([]);
-  const [filter, setFilter] = useState('');
 
-  const addContact = (contact) => {
-    setContacts([...contacts, contact]);
+  const handleAddContact = (newContact) => {
+    setContacts([...contacts, newContact]);
   };
 
-  const handleFilterChange = (event) => {
-    setFilter(event.target.value);
+  const handleDeleteContact = (contactId) => {
+    setContacts(contacts.filter(contact => contact.id !== contactId));
   };
-
-  const filteredContacts = contacts.filter((contact) =>
-    contact.name.toLowerCase().includes(filter.toLowerCase())
-  );
 
   return (
     <div className="App">
       <h1>Phonebook</h1>
-      <ContactForm addContact={addContact} />
+      <ContactForm addContact={handleAddContact} />
       <h2>Contacts</h2>
-      <Filter filter={filter} handleFilterChange={handleFilterChange} />
-      <ContactList contacts={filteredContacts} />
+      <ContactList contacts={contacts} onDeleteContact={handleDeleteContact} />
     </div>
   );
 }
