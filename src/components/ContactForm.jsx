@@ -1,7 +1,7 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-
+import { FormContainer } from './ContactFormStyled'; 
 const ContactForm = ({ addContact }) => {
   const validationSchema = Yup.object().shape({
     name: Yup.string()
@@ -20,14 +20,13 @@ const ContactForm = ({ addContact }) => {
     number: '',
   };
 
-  
   const onSubmit = (values, { resetForm }) => {
     addContact({ ...values, id: Math.random().toString() });
     resetForm();
   };
 
   return (
-    <div>
+    <FormContainer>
       <h2>Add Contact</h2>
       <Formik
         initialValues={initialValues}
@@ -48,7 +47,7 @@ const ContactForm = ({ addContact }) => {
           <button type="submit">Add Contact</button>
         </Form>
       </Formik>
-    </div>
+    </FormContainer>
   );
 };
 
