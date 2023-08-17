@@ -3,12 +3,8 @@ import ContactForm from './ContactForm';
 import ContactList from './ContactList';
 import Filter from './Filter';
 import '../index.css';
-import {
-  AppContainer,
-  Title,
-  FilterWrapper,
-  FilterInput,
-} from './AppStyled';
+import { AppContainer, Title, FilterWrapper } from './AppStyled'; 
+
 function App() {
   const [contacts, setContacts] = useState([]);
   const [filter, setFilter] = useState('');
@@ -36,9 +32,6 @@ function App() {
       <h2>Contacts</h2>
       <FilterWrapper>
         <Filter filter={filter} handleFilterChange={handleFilterChange} />
-        {contacts.length > 0 && (
-          <FilterInput type="text" value={filter} onChange={handleFilterChange} />
-        )}
       </FilterWrapper>
       <ContactList contacts={filteredContacts} onDeleteContact={handleDeleteContact} />
     </AppContainer>

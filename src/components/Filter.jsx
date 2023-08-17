@@ -5,20 +5,26 @@ const FilterWrapper = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 20px;
-`;
 
-const FilterInput = styled.input`
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 3px;
-  flex-grow: 1;
+  label {
+    font-size: 16px;
+    margin-right: 10px;
+  }
+
+  input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-size: 16px;
+    flex-grow: 1;
+  }
 `;
 
 const Filter = ({ filter, handleFilterChange }) => {
   return (
     <FilterWrapper>
       <label>Filter contacts by name:</label>
-      <FilterInput
+      <input
         type="text"
         value={filter}
         onChange={handleFilterChange}
